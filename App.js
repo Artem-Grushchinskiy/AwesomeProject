@@ -24,7 +24,6 @@ const App = () => {
   }, []);
 
   if (!fontsLoaded) {
-    // Ждем, пока шрифты загрузятся
     return null;
   }
 

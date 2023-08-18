@@ -34,7 +34,9 @@ const AvatarUpload = () => {
     <TouchableOpacity style={styles.avatarContainer} onPress={selectImage}>
       <View style={styles.avatarImageContainer}>
         {avatarUri ? (
-          <Image source={{ uri: avatarUri }} style={styles.avatarImage} />
+          <View style={styles.iconsContainer}>
+            <Image source={{ uri: avatarUri }} style={styles.avatarImage} />
+          </View>
         ) : (
           <View style={styles.iconsContainer}>
             <AntDesign name="pluscircleo" size={32} color="#FF6C00" />
