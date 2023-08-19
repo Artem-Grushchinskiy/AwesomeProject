@@ -12,7 +12,6 @@ import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Container from "../Components/Container";
 import LoginInput from "../Components/LoginInput";
-import EmailPasswordInput from "../Components/EmailPasswordInput";
 import GoalButton from "../Components/GoalButton";
 import AvatarUpload from "../Components/AvatarUpload";
 
@@ -23,6 +22,7 @@ const RegistrationScreen = () => {
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [extraMargin, setExtraMargin] = useState(0);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const windowDimensions = useWindowDimensions();
 
   useEffect(() => {
@@ -70,14 +70,29 @@ const RegistrationScreen = () => {
                 onBlur={() => setIsLoginFocused(false)}
                 isFocused={isLoginFocused}
               />
-              <EmailPasswordInput
-                isEmailFocused={isEmailFocused}
-                setIsEmailFocused={setIsEmailFocused}
-                isPasswordFocused={isPasswordFocused}
-                setIsPasswordFocused={setIsPasswordFocused}
-                showPassword={showPassword}
-                setShowPassword={setShowPassword}
+              <LoginInput
+                placeholder="Адреса електронної пошти"
+                onFocus={() => setIsEmailFocused(true)}
+                onBlur={() => setIsEmailFocused(false)}
+                isFocused={isEmailFocused}
               />
+              <View style={styles.passwordInputContainer}>
+                <LoginInput
+                  placeholder="Пароль"
+                  secureTextEntry={!passwordVisible}
+                  onFocus={() => setIsPasswordFocused(true)}
+                  onBlur={() => setIsPasswordFocused(false)}
+                  isFocused={isPasswordFocused}
+                />
+                <TouchableOpacity
+                  onPress={() => setPasswordVisible(!passwordVisible)}
+                  style={styles.showPasswordButton}
+                >
+                  <Text style={styles.showPasswordButtonText}>
+                    {passwordVisible ? "Приховати" : "Показати"}
+                  </Text>
+                </TouchableOpacity>
+              </View>
               <GoalButton title="Зареєстуватися" onPress={() => {}} />
               <TouchableOpacity onPress={() => navigation.navigate("Login")}>
                 <Text style={styles.loginButtonText}>Вже є акаунт? Увійти</Text>
@@ -125,6 +140,19 @@ const styles = StyleSheet.create({
     color: "#1B4371",
     marginLeft: "auto",
     marginRight: "auto",
+  },
+  passwordInputContainer: {
+    position: "relative",
+  },
+  showPasswordButton: {
+    position: "absolute",
+    top: "50%",
+    right: 32,
+    transform: [{ translateY: -10 }],
+  },
+  showPasswordButtonText: {
+    fontFamily: "Roboto-400",
+    color: "#1B4371",
   },
 });
 

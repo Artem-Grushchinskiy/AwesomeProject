@@ -4,7 +4,7 @@ import { TextInput, StyleSheet } from "react-native";
 const LoginInput = ({ placeholder, onFocus, onBlur, isFocused }) => {
   return (
     <TextInput
-      style={[styles.input, isFocused && styles.inputFocused]}
+      style={[styles.input, isFocused ? styles.inputFocused : null]}
       placeholder={placeholder}
       onFocus={onFocus}
       onBlur={onBlur}
@@ -15,7 +15,7 @@ const LoginInput = ({ placeholder, onFocus, onBlur, isFocused }) => {
 const styles = StyleSheet.create({
   input: {
     fontFamily: "Roboto-400",
-    color: "#F6F6F6",
+    color: "#212121",
     backgroundColor: "#E8E8E8",
     borderWidth: 1,
     borderColor: "#ccc",
