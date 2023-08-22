@@ -115,12 +115,12 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   container: {
-    marginTop: 323,
+    marginTop: 280,
     flex: 1,
   },
 
   avatarUploadContainer: {
-    marginTop: -96,
+    marginTop: -60,
   },
   title: {
     fontFamily: "Roboto-500",

@@ -13,11 +13,9 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import Container from "../Components/Container";
 import LoginInput from "../Components/LoginInput";
 import GoalButton from "../Components/GoalButton";
-import AvatarUpload from "../Components/AvatarUpload";
 
 const RegistrationScreen = () => {
   const navigation = useNavigation();
-  const [isLoginFocused, setIsLoginFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
